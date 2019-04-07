@@ -1,0 +1,16 @@
+PODS:
+  - LimberTabbar (0.1.0)
+
+DEPENDENCIES:
+  - LimberTabbar (from `../LimberTabbar`)
+
+EXTERNAL SOURCES:
+  LimberTabbar:
+    :path: "../LimberTabbar"
+
+SPEC CHECKSUMS:
+  LimberTabbar: 93a9503010616cda00f6f673e87a39649091299d
+
+PODFILE CHECKSUM: 821edec11a7d5f01f3b861818522087c0019aa4b
+
+COCOAPODS: 1.6.0.beta.2

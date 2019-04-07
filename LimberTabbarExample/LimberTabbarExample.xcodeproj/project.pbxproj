@@ -1,0 +1,417 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		734944007A376D1CD608D6F9 /* Pods_LimberTabbarExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE974C6DC2BBDEBDC5A92ACD /* Pods_LimberTabbarExample.framework */; };
+		F4312C2F2259CAC500EF67FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4312C2E2259CAC500EF67FC /* AppDelegate.swift */; };
+		F4312C312259CAC600EF67FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4312C302259CAC600EF67FC /* ViewController.swift */; };
+		F4312C342259CAC600EF67FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4312C322259CAC600EF67FC /* Main.storyboard */; };
+		F4312C362259CAC800EF67FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4312C352259CAC800EF67FC /* Assets.xcassets */; };
+		F4312C392259CAC800EF67FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4312C372259CAC800EF67FC /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BE974C6DC2BBDEBDC5A92ACD /* Pods_LimberTabbarExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LimberTabbarExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCB07F2615F88636043C2B31 /* Pods-LimberTabbarExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LimberTabbarExample.debug.xcconfig"; path = "Target Support Files/Pods-LimberTabbarExample/Pods-LimberTabbarExample.debug.xcconfig"; sourceTree = "<group>"; };
+		E7122366FB71EA214E81B89B /* Pods-LimberTabbarExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LimberTabbarExample.release.xcconfig"; path = "Target Support Files/Pods-LimberTabbarExample/Pods-LimberTabbarExample.release.xcconfig"; sourceTree = "<group>"; };
+		F4312C2B2259CAC500EF67FC /* LimberTabbarExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LimberTabbarExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4312C2E2259CAC500EF67FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F4312C302259CAC600EF67FC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F4312C332259CAC600EF67FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F4312C352259CAC800EF67FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F4312C382259CAC800EF67FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F4312C3A2259CAC800EF67FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F4312C282259CAC500EF67FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				734944007A376D1CD608D6F9 /* Pods_LimberTabbarExample.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		189E8BC6EEB58946D7845633 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CCB07F2615F88636043C2B31 /* Pods-LimberTabbarExample.debug.xcconfig */,
+				E7122366FB71EA214E81B89B /* Pods-LimberTabbarExample.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		1BB4E9B0F1517E986D98260F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE974C6DC2BBDEBDC5A92ACD /* Pods_LimberTabbarExample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4312C222259CAC500EF67FC = {
+			isa = PBXGroup;
+			children = (
+				F4312C2D2259CAC500EF67FC /* LimberTabbarExample */,
+				F4312C2C2259CAC500EF67FC /* Products */,
+				189E8BC6EEB58946D7845633 /* Pods */,
+				1BB4E9B0F1517E986D98260F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F4312C2C2259CAC500EF67FC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F4312C2B2259CAC500EF67FC /* LimberTabbarExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F4312C2D2259CAC500EF67FC /* LimberTabbarExample */ = {
+			isa = PBXGroup;
+			children = (
+				F4312C2E2259CAC500EF67FC /* AppDelegate.swift */,
+				F4312C302259CAC600EF67FC /* ViewController.swift */,
+				F4312C322259CAC600EF67FC /* Main.storyboard */,
+				F4312C352259CAC800EF67FC /* Assets.xcassets */,
+				F4312C372259CAC800EF67FC /* LaunchScreen.storyboard */,
+				F4312C3A2259CAC800EF67FC /* Info.plist */,
+			);
+			path = LimberTabbarExample;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F4312C2A2259CAC500EF67FC /* LimberTabbarExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4312C3D2259CAC800EF67FC /* Build configuration list for PBXNativeTarget "LimberTabbarExample" */;
+			buildPhases = (
+				6299CB35E0AFB953D353A9C2 /* [CP] Check Pods Manifest.lock */,
+				F4312C272259CAC500EF67FC /* Sources */,
+				F4312C282259CAC500EF67FC /* Frameworks */,
+				F4312C292259CAC500EF67FC /* Resources */,
+				7E99B1319B5C85EEDCEE1B85 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LimberTabbarExample;
+			productName = LimberTabbarExample;
+			productReference = F4312C2B2259CAC500EF67FC /* LimberTabbarExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F4312C232259CAC500EF67FC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Afshin Hoseini";
+				TargetAttributes = {
+					F4312C2A2259CAC500EF67FC = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = F4312C262259CAC500EF67FC /* Build configuration list for PBXProject "LimberTabbarExample" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F4312C222259CAC500EF67FC;
+			productRefGroup = F4312C2C2259CAC500EF67FC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F4312C2A2259CAC500EF67FC /* LimberTabbarExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F4312C292259CAC500EF67FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4312C392259CAC800EF67FC /* LaunchScreen.storyboard in Resources */,
+				F4312C362259CAC800EF67FC /* Assets.xcassets in Resources */,
+				F4312C342259CAC600EF67FC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6299CB35E0AFB953D353A9C2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LimberTabbarExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E99B1319B5C85EEDCEE1B85 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LimberTabbarExample/Pods-LimberTabbarExample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/LimberTabbar/LimberTabbar.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LimberTabbar.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LimberTabbarExample/Pods-LimberTabbarExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F4312C272259CAC500EF67FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4312C312259CAC600EF67FC /* ViewController.swift in Sources */,
+				F4312C2F2259CAC500EF67FC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F4312C322259CAC600EF67FC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4312C332259CAC600EF67FC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F4312C372259CAC800EF67FC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4312C382259CAC800EF67FC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F4312C3B2259CAC800EF67FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F4312C3C2259CAC800EF67FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F4312C3E2259CAC800EF67FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCB07F2615F88636043C2B31 /* Pods-LimberTabbarExample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A387QBDQXP;
+				INFOPLIST_FILE = LimberTabbarExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.afshin.LimberTabbarExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F4312C3F2259CAC800EF67FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7122366FB71EA214E81B89B /* Pods-LimberTabbarExample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A387QBDQXP;
+				INFOPLIST_FILE = LimberTabbarExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.afshin.LimberTabbarExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F4312C262259CAC500EF67FC /* Build configuration list for PBXProject "LimberTabbarExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4312C3B2259CAC800EF67FC /* Debug */,
+				F4312C3C2259CAC800EF67FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4312C3D2259CAC800EF67FC /* Build configuration list for PBXNativeTarget "LimberTabbarExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4312C3E2259CAC800EF67FC /* Debug */,
+				F4312C3F2259CAC800EF67FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F4312C232259CAC500EF67FC /* Project object */;
+}
