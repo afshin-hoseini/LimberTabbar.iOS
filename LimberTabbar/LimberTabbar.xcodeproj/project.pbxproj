@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F4312C1C2259C9AE00EF67FC /* LimberTabbar.h in Headers */ = {isa = PBXBuildFile; fileRef = F4312C1A2259C9AE00EF67FC /* LimberTabbar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F4312C432259D39300EF67FC /* CGMutablePath+pit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4312C422259D39300EF67FC /* CGMutablePath+pit.swift */; };
+		F4312C472259E17100EF67FC /* AHPitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4312C462259E17100EF67FC /* AHPitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +17,7 @@
 		F4312C1A2259C9AE00EF67FC /* LimberTabbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LimberTabbar.h; sourceTree = "<group>"; };
 		F4312C1B2259C9AE00EF67FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4312C422259D39300EF67FC /* CGMutablePath+pit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGMutablePath+pit.swift"; sourceTree = "<group>"; };
+		F4312C462259E17100EF67FC /* AHPitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHPitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,11 +50,20 @@
 		F4312C192259C9AE00EF67FC /* LimberTabbar */ = {
 			isa = PBXGroup;
 			children = (
+				F4312C452259E15A00EF67FC /* Extensions */,
 				F4312C1A2259C9AE00EF67FC /* LimberTabbar.h */,
 				F4312C1B2259C9AE00EF67FC /* Info.plist */,
-				F4312C422259D39300EF67FC /* CGMutablePath+pit.swift */,
+				F4312C462259E17100EF67FC /* AHPitView.swift */,
 			);
 			path = LimberTabbar;
+			sourceTree = "<group>";
+		};
+		F4312C452259E15A00EF67FC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F4312C422259D39300EF67FC /* CGMutablePath+pit.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4312C472259E17100EF67FC /* AHPitView.swift in Sources */,
 				F4312C432259D39300EF67FC /* CGMutablePath+pit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
