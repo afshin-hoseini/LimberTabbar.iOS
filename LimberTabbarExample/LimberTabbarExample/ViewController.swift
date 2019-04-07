@@ -7,14 +7,35 @@
 //
 
 import UIKit
+import LimberTabbar
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var pitView: AHPitView!
+    @IBOutlet weak var slider_pitPosition: UISlider!
+    @IBOutlet weak var slider_pitDepthScale: UISlider!
+    @IBOutlet weak var switch_guideSquares: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        pitView.pitDepthScale = CGFloat(slider_pitDepthScale.value)
+        pitView.pitPositionScale = CGFloat(slider_pitPosition.value)
+        pitView.showRects = switch_guideSquares.isOn
     }
 
-
+    @IBAction func onPitPositionChanged(_ slider: UISlider) {
+        
+        pitView.pitPositionScale = CGFloat(slider.value)
+    }
+    
+    @IBAction func onPitDepthScaleChanged(_ slider: UISlider) {
+        
+        pitView.pitDepthScale = CGFloat(slider.value)
+    }
+    
+    @IBAction func onGuideSquaresSwitchValueChanged(_ sender: UISwitch) {
+        pitView.showRects = sender.isOn
+    }
 }
 
