@@ -10,6 +10,10 @@
 		F4312C1C2259C9AE00EF67FC /* LimberTabbar.h in Headers */ = {isa = PBXBuildFile; fileRef = F4312C1A2259C9AE00EF67FC /* LimberTabbar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F4312C432259D39300EF67FC /* CGMutablePath+pit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4312C422259D39300EF67FC /* CGMutablePath+pit.swift */; };
 		F4312C472259E17100EF67FC /* AHPitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4312C462259E17100EF67FC /* AHPitView.swift */; };
+		F4312C49225A3AC700EF67FC /* AHLimberTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4312C48225A3AC700EF67FC /* AHLimberTabbar.swift */; };
+		F4312C4C225A4AEE00EF67FC /* ItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4312C4B225A4AEE00EF67FC /* ItemView.xib */; };
+		F4312C4F225A4D8100EF67FC /* AHLimberTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4312C4E225A4D8100EF67FC /* AHLimberTabBarItem.swift */; };
+		F4C65B522269F167007909F6 /* AHSelectedTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C65B512269F167007909F6 /* AHSelectedTabItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +22,10 @@
 		F4312C1B2259C9AE00EF67FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4312C422259D39300EF67FC /* CGMutablePath+pit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGMutablePath+pit.swift"; sourceTree = "<group>"; };
 		F4312C462259E17100EF67FC /* AHPitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHPitView.swift; sourceTree = "<group>"; };
+		F4312C48225A3AC700EF67FC /* AHLimberTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHLimberTabbar.swift; sourceTree = "<group>"; };
+		F4312C4B225A4AEE00EF67FC /* ItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemView.xib; sourceTree = "<group>"; };
+		F4312C4E225A4D8100EF67FC /* AHLimberTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHLimberTabBarItem.swift; sourceTree = "<group>"; };
+		F4C65B512269F167007909F6 /* AHSelectedTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHSelectedTabItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +58,7 @@
 		F4312C192259C9AE00EF67FC /* LimberTabbar */ = {
 			isa = PBXGroup;
 			children = (
+				F4312C4A225A4AAD00EF67FC /* Tabbar */,
 				F4312C452259E15A00EF67FC /* Extensions */,
 				F4312C1A2259C9AE00EF67FC /* LimberTabbar.h */,
 				F4312C1B2259C9AE00EF67FC /* Info.plist */,
@@ -64,6 +73,25 @@
 				F4312C422259D39300EF67FC /* CGMutablePath+pit.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F4312C4A225A4AAD00EF67FC /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				F4312C4D225A4D5E00EF67FC /* Item */,
+				F4312C48225A3AC700EF67FC /* AHLimberTabbar.swift */,
+				F4C65B512269F167007909F6 /* AHSelectedTabItem.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		F4312C4D225A4D5E00EF67FC /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				F4312C4B225A4AEE00EF67FC /* ItemView.xib */,
+				F4312C4E225A4D8100EF67FC /* AHLimberTabBarItem.swift */,
+			);
+			path = Item;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,6 +163,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4312C4C225A4AEE00EF67FC /* ItemView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,8 +174,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4312C49225A3AC700EF67FC /* AHLimberTabbar.swift in Sources */,
 				F4312C472259E17100EF67FC /* AHPitView.swift in Sources */,
+				F4312C4F225A4D8100EF67FC /* AHLimberTabBarItem.swift in Sources */,
 				F4312C432259D39300EF67FC /* CGMutablePath+pit.swift in Sources */,
+				F4C65B522269F167007909F6 /* AHSelectedTabItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +320,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = LimberTabbar/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,6 +348,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = LimberTabbar/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
