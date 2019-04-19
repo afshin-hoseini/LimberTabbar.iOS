@@ -16,8 +16,49 @@ class AHSelectedTabItem: UIView {
         
         didSet {
             
-            imgTabIcon.image = currentTab?.tabBarItem?.image
-            center.x = currentTab?.center.x ?? center.x
+            let fromCenterX = center.x
+            let toCenterX = currentTab?.center.x ?? center.x
+            let midCenterX = fromCenterX + (toCenterX-fromCenterX)/2
+            
+            let fromY = CGFloat(-10) + (frame.height / 2)
+            let midY = CGFloat(50) + (frame.height / 2)
+            let toY = CGFloat(-10) + (frame.height / 2)
+            
+            let anim = CAKeyframeAnimation(keyPath: #keyPath(CALayer.transform))
+            anim.values = [
+                
+                CGAffineTransform.init(translationX: fromCenterX, y: fromY),
+                CGAffineTransform.init(translationX: midCenterX, y: midY),
+                CGAffineTransform.init(translationX: toCenterX, y: toY)
+            ]
+            anim.duration = 0.8
+            anim.keyTimes=[0,0.5,1]
+            anim.isRemovedOnCompletion = false
+            anim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            anim.fillMode = .both
+            
+//            layer.add(anim, forKey: #keyPath(CALayer.transform))
+            
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                self.imgTabIcon.image = self.currentTab?.tabBarItem?.image
+            }
+            
+            UIView.animateKeyframes(withDuration: 0.8, delay: 0, options: [], animations: {
+                
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
+                    
+                    self.center = CGPoint(x: midCenterX, y: midY)
+                })
+                
+                UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
+                    
+                    self.center = CGPoint(x: toCenterX, y: toY)
+                })
+                
+            }) { (finish) in
+                
+            }
             
         }
     }
@@ -49,6 +90,7 @@ class AHSelectedTabItem: UIView {
         layer.shadowRadius = 2
         
         imgTabIcon = UIImageView()
+        imgTabIcon.tintColor = UIColor.white
         addSubview(imgTabIcon)
         
         imgTabIcon.translatesAutoresizingMaskIntoConstraints = false

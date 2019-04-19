@@ -155,11 +155,11 @@ public class AHLimberTabbar : UITabBar {
         anim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         anim.values = [
                         getBorderPath(for: fromCenterX, depthScale:1),
-                        getBorderPath(for: fromCenterX + (toCenterX-fromCenterX)/2, depthScale:0.7),
+                        getBorderPath(for: fromCenterX + (toCenterX-fromCenterX)/2, depthScale:0.8),
                         getBorderPath(for: toCenterX, depthScale:1)
                     ]
         anim.keyTimes = [0,0.5,1]
-        anim.duration = CFTimeInterval(0.7)
+        anim.duration = CFTimeInterval(0.8)
         anim.isRemovedOnCompletion = false
         anim.fillMode = .both
         
