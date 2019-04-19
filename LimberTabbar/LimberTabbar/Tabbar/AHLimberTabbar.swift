@@ -110,6 +110,11 @@ public class AHLimberTabbar : UITabBar {
      */
     func renderBorder(pitCenterX : CGFloat) {
         
+        borderLayer.path = getBorderPath(for: pitCenterX, depthScale: 1)
+    }
+    
+    func getBorderPath(for pitCenterX: CGFloat, depthScale: CGFloat) -> CGMutablePath {
+        
         //Initial calculations
         let pitWidth = pitDepth * 2
         let y = CGFloat(0)
@@ -120,14 +125,14 @@ public class AHLimberTabbar : UITabBar {
         borderPath.move(to: CGPoint.zero)
         borderPath.addLine(to: CGPoint(x: holeStartingPointX, y: y))
         
-        borderPath.addPit(toPath: borderPath, startingPointX: holeStartingPointX, y: y, depth: pitDepth, scale: pitDepthScale)
+        borderPath.addPit(toPath: borderPath, startingPointX: holeStartingPointX, y: y, depth: pitDepth, scale: depthScale)
         
         borderPath.addLine(to: CGPoint(x: bounds.width, y: 0))
         borderPath.addLine(to: CGPoint(x: bounds.width, y: bounds.height))
         borderPath.addLine(to: CGPoint(x: 0, y: bounds.height))
         borderPath.addLine(to: CGPoint(x: 0, y: 0))
         
-        borderLayer.path = borderPath
+        return borderPath
     }
     
     
@@ -136,11 +141,36 @@ public class AHLimberTabbar : UITabBar {
         selectedTabHolder.currentTab?.show()
         tab.hide()
         
-        renderBorder(pitCenterX: tab.center.x)
+        animatePit(fromCenterX: (selectedTabHolder.currentTab ?? tabs[0]).center.x, toCenterX: tab.center.x)
+        
+        //renderBorder(pitCenterX: tab.center.x)
         selectedTabHolder.currentTab = tab
-        
-        
     }
+    
+    
+    func animatePit(fromCenterX: CGFloat, toCenterX : CGFloat) {
+        
+        
+        let anim = CAKeyframeAnimation(keyPath: #keyPath(CAShapeLayer.path))
+        anim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        anim.values = [
+                        getBorderPath(for: fromCenterX, depthScale:1),
+                        getBorderPath(for: fromCenterX + (toCenterX-fromCenterX)/2, depthScale:0.7),
+                        getBorderPath(for: toCenterX, depthScale:1)
+                    ]
+        anim.keyTimes = [0,0.5,1]
+        anim.duration = CFTimeInterval(0.7)
+        anim.isRemovedOnCompletion = false
+        anim.fillMode = .both
+        
+        borderLayer.add(anim, forKey: #keyPath(CAShapeLayer.path))
+    }
+    
+    
+}
+
+
+extension AHLimberTabbar : CAAnimationDelegate {
     
     
 }
