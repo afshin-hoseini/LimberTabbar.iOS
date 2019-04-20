@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="PyE-In-VNT">
             <objects>
-                <viewController id="qhp-3K-jku" customClass="ViewController" customModule="LayerAnimationTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qhp-3K-jku" customClass="ViewController" customModule="LimberTabbarExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0aF-ep-fc3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,6 +83,18 @@
                                     <action selector="onGuideSquaresSwitchValueChanged:" destination="qhp-3K-jku" eventType="valueChanged" id="JBq-UD-6bC"/>
                                 </connections>
                             </switch>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" itemPositioning="fill" translatesAutoresizingMaskIntoConstraints="NO" id="vLJ-1s-lDG" customClass="AHLimberTabbar" customModule="LimberTabbar">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem image="Face" id="vkY-82-Lpd"/>
+                                    <tabBarItem image="Alarm" id="NVT-af-e8g"/>
+                                    <tabBarItem image="Favorite" id="Iov-WU-5Ji"/>
+                                    <tabBarItem title="" image="FingerPrint" id="Gqz-Yn-owj"/>
+                                    <tabBarItem title="" image="Calendar" id="FPj-86-0hX"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -125,4 +137,11 @@
             <point key="canvasLocation" x="140" y="132.68365817091455"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Alarm" width="48" height="48"/>
+        <image name="Calendar" width="48" height="48"/>
+        <image name="Face" width="48" height="48"/>
+        <image name="Favorite" width="48" height="48"/>
+        <image name="FingerPrint" width="48" height="48"/>
+    </resources>
 </document>

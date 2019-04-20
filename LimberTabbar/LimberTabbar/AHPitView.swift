@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@IBDesignable
 public class AHPitView : UIView {
     
     //MARK:- Properties
