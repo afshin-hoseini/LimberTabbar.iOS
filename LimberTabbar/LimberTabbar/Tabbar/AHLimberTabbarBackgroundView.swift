@@ -67,8 +67,6 @@ class AHLimberTabbarBackgroundView : UIView {
         borderLayer.shadowOpacity = 0.3
         
         layer.addSublayer(borderLayer)
-        
-        //self.backgroundColor = nil
     }
     
     /**
@@ -104,11 +102,21 @@ class AHLimberTabbarBackgroundView : UIView {
     func animatePit(fromCenterX: CGFloat, toCenterX : CGFloat) {
         
         
+        let distance = (toCenterX-fromCenterX)
+        let maxDistance = bounds.width
+        let minDepthShrinking = CGFloat(0.6)
+        let maxDepthShrinking = CGFloat(0.8)
+        
+        let distanceRatio = abs(distance) / maxDistance
+        let depthShrinking = maxDepthShrinking - ((maxDepthShrinking - minDepthShrinking) * distanceRatio)
+        
+        print("Shrinking : \(depthShrinking) - DistanceRatio: \(distanceRatio)")
+        
         let anim = CAKeyframeAnimation(keyPath: #keyPath(CAShapeLayer.path))
         anim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         anim.values = [
             getBorderPath(for: fromCenterX, depthScale:1),
-            getBorderPath(for: fromCenterX + (toCenterX-fromCenterX)/2, depthScale:0.8),
+            getBorderPath(for: fromCenterX + distance/2, depthScale:depthShrinking),
             getBorderPath(for: toCenterX, depthScale:1)
         ]
         anim.keyTimes = [0,0.5,1]
