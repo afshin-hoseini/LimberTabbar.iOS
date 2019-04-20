@@ -32,14 +32,44 @@ public class AHLimberTabBarItemView : UIView {
         commonInit()
     }
     
+    func pulse() {
+        
+        UIView.animateKeyframes(withDuration: 0.8, delay: 0, options: [], animations: {
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
+                self.alpha = 0
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
+                self.alpha = 1
+            })
+            
+        }) { (f) in
+            
+        }
+    }
+    
     func hide() {
         
-        self.isHidden = true
+        UIView.animate(withDuration: 0.8, animations: {
+            
+            self.alpha = 0
+        }) { (finished) in
+            
+            self.isHidden = true
+        }
+        
     }
     
     func show() {
         
+        self.alpha = 0
         self.isHidden = false
+        
+        UIView.animate(withDuration: 0.8) {
+            
+            self.alpha = 1
+        }
     }
     
     func commonInit() {

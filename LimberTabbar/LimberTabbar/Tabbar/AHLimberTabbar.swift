@@ -112,11 +112,24 @@ public class AHLimberTabbar : UITabBar {
         
         selectedTabHolder.currentTab?.show()
         tab.hide()
-        
         backgroundView.animatePit(fromCenterX: (selectedTabHolder.currentTab ?? tabs[0]).center.x, toCenterX: tab.center.x)
+    
+        if  let prevTab = selectedTabHolder.currentTab,
+            let prevTabIndex = tabs.firstIndex(of: prevTab),
+            let selectedTabIndex = tabs.firstIndex(of: tab),
+            abs(prevTabIndex - selectedTabIndex) > 1 {
+            
+                let minIdx = min(prevTabIndex,selectedTabIndex)+1
+                let maxIdx = max(prevTabIndex,selectedTabIndex)
+            
+                for  tabIndex in minIdx..<maxIdx {
+                    
+                    tabs[tabIndex].pulse()
+                }
+        }
         
-        //renderBorder(pitCenterX: tab.center.x)
         selectedTabHolder.currentTab = tab
+        
     }
     
     
