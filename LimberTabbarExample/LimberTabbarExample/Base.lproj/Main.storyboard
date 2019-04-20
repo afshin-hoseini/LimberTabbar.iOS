@@ -89,8 +89,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem image="Face" id="vkY-82-Lpd"/>
-                                    <tabBarItem image="Face" id="NVT-af-e8g"/>
-                                    <tabBarItem image="Credit" id="Iov-WU-5Ji"/>
+                                    <tabBarItem image="Alarm" id="NVT-af-e8g"/>
+                                    <tabBarItem image="Favorite" id="Iov-WU-5Ji"/>
+                                    <tabBarItem title="" image="FingerPrint" id="Gqz-Yn-owj"/>
+                                    <tabBarItem title="" image="Calendar" id="FPj-86-0hX"/>
                                 </items>
                             </tabBar>
                         </subviews>
@@ -136,7 +138,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Credit" width="96" height="96"/>
-        <image name="Face" width="72" height="72"/>
+        <image name="Alarm" width="48" height="48"/>
+        <image name="Calendar" width="48" height="48"/>
+        <image name="Face" width="48" height="48"/>
+        <image name="Favorite" width="48" height="48"/>
+        <image name="FingerPrint" width="48" height="48"/>
     </resources>
 </document>
