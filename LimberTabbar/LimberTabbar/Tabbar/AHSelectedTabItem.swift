@@ -44,7 +44,7 @@ class AHSelectedTabItem: UIView {
                 self.imgTabIcon.image = self.currentTab?.tabBarItem?.image
             }
             
-            UIView.animateKeyframes(withDuration: 0.8, delay: 0, options: [], animations: {
+            UIView.animateKeyframes(withDuration: 0.6, delay: 0, options: [], animations: {
                 
                 UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                     

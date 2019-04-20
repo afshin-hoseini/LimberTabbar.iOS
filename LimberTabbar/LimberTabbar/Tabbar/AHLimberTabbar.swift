@@ -19,10 +19,10 @@ public class AHLimberTabbar : UITabBar {
         get {return self._items}
     }
     
-    var borderLayer = CAShapeLayer()
-    let pitDepth = CGFloat(40)
-    let maxDepth = CGFloat(40)
+    var isInitialized = false
     var tabs = [AHLimberTabBarItemView]()
+    var tabsHolderView : UIView!
+    var backgroundView : AHLimberTabbarBackgroundView!
     var selectedTabHolder : AHSelectedTabItem!
     var selectedTab : AHLimberTabBarItemView? {
         
@@ -31,8 +31,6 @@ public class AHLimberTabbar : UITabBar {
             self.select(tab: selectedTab!)
         }
     }
-    
-    public var pitDepthScale = CGFloat(1) { didSet { renderBorder(pitCenterX: selectedTab?.center.x ?? 0) } }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -51,19 +49,44 @@ public class AHLimberTabbar : UITabBar {
         self.selectedTabHolder = AHSelectedTabItem(size: 40)
         addSubview(selectedTabHolder)
         
+        self.backgroundView = AHLimberTabbarBackgroundView(parent: self)
+        
+        //Initializing tabs holder view
+        tabsHolderView = UIView()
+        addSubview(tabsHolderView)
+        
+        if #available(iOS 9.0, *) {
+        
+            tabsHolderView.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                
+                tabsHolderView.topAnchor.constraint(equalTo: topAnchor),
+                tabsHolderView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                tabsHolderView.trailingAnchor.constraint(equalTo: trailingAnchor),
+                tabsHolderView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            ])
+        }
+        
+        
+        
         self.backgroundImage = UIImage()
         self.shadowImage = UIImage()
-        addLayers()
         
-        
-        
+        isInitialized = true
+        layoutItems()
         self.selectedTab = self.tabs[0]
     }
     
     public override func setItems(_ items: [UITabBarItem]?, animated: Bool) {
         
         self.items = items
-        layoutItems()
+        
+        if(isInitialized) {
+            
+            layoutItems()
+        }
+        
     }
     
     func layoutItems() {
@@ -76,63 +99,12 @@ public class AHLimberTabbar : UITabBar {
             
             let itemView = AHLimberTabBarItemView(tabBarItem: item)
             itemView.onSelected = self.select
-            addSubview(itemView)
+            tabsHolderView.addSubview(itemView)
             
             itemView.frame = CGRect(x: x, y: 0, width: itemWidth, height: itemHeight)
             x += itemWidth
             tabs.append(itemView)
         })
-    }
-    
-    func addLayers() {
-        
-        //Initializes border and guide rects layers
-        
-        borderLayer.bounds = bounds
-        borderLayer.fillColor = UIColor.red.cgColor
-        borderLayer.strokeColor = UIColor.red.cgColor
-        borderLayer.position = CGPoint(x: 0, y: 0)
-        borderLayer.anchorPoint = CGPoint(x: 0, y: 0)
-        borderLayer.lineJoin = .round
-        
-        borderLayer.shadowColor = UIColor.black.cgColor
-        borderLayer.shadowOffset = CGSize(width: 0, height: -2)
-        borderLayer.shadowRadius = 1
-        borderLayer.shadowOpacity = 0.3
-        
-        layer.insertSublayer(borderLayer, at: 0)
-        
-        self.backgroundColor = nil
-    }
-    
-    /**
-     * Renders the border of view including the hole
-     */
-    func renderBorder(pitCenterX : CGFloat) {
-        
-        borderLayer.path = getBorderPath(for: pitCenterX, depthScale: 1)
-    }
-    
-    func getBorderPath(for pitCenterX: CGFloat, depthScale: CGFloat) -> CGMutablePath {
-        
-        //Initial calculations
-        let pitWidth = pitDepth * 2
-        let y = CGFloat(0)
-        let holeStartingPointX = pitCenterX - (pitWidth/2)
-        
-        //Creates the hole
-        let borderPath = CGMutablePath()
-        borderPath.move(to: CGPoint.zero)
-        borderPath.addLine(to: CGPoint(x: holeStartingPointX, y: y))
-        
-        borderPath.addPit(toPath: borderPath, startingPointX: holeStartingPointX, y: y, depth: pitDepth, scale: depthScale)
-        
-        borderPath.addLine(to: CGPoint(x: bounds.width, y: 0))
-        borderPath.addLine(to: CGPoint(x: bounds.width, y: bounds.height))
-        borderPath.addLine(to: CGPoint(x: 0, y: bounds.height))
-        borderPath.addLine(to: CGPoint(x: 0, y: 0))
-        
-        return borderPath
     }
     
     
@@ -141,29 +113,10 @@ public class AHLimberTabbar : UITabBar {
         selectedTabHolder.currentTab?.show()
         tab.hide()
         
-        animatePit(fromCenterX: (selectedTabHolder.currentTab ?? tabs[0]).center.x, toCenterX: tab.center.x)
+        backgroundView.animatePit(fromCenterX: (selectedTabHolder.currentTab ?? tabs[0]).center.x, toCenterX: tab.center.x)
         
         //renderBorder(pitCenterX: tab.center.x)
         selectedTabHolder.currentTab = tab
-    }
-    
-    
-    func animatePit(fromCenterX: CGFloat, toCenterX : CGFloat) {
-        
-        
-        let anim = CAKeyframeAnimation(keyPath: #keyPath(CAShapeLayer.path))
-        anim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        anim.values = [
-                        getBorderPath(for: fromCenterX, depthScale:1),
-                        getBorderPath(for: fromCenterX + (toCenterX-fromCenterX)/2, depthScale:0.8),
-                        getBorderPath(for: toCenterX, depthScale:1)
-                    ]
-        anim.keyTimes = [0,0.5,1]
-        anim.duration = CFTimeInterval(0.8)
-        anim.isRemovedOnCompletion = false
-        anim.fillMode = .both
-        
-        borderLayer.add(anim, forKey: #keyPath(CAShapeLayer.path))
     }
     
     
