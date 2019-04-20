@@ -80,7 +80,7 @@ class AHLimberTabbarBackgroundView : UIView {
     func getBorderPath(for pitCenterX: CGFloat, depthScale: CGFloat) -> CGMutablePath {
         
         //Initial calculations
-        let pitWidth = pitDepth * 2
+        let pitWidth = CGMutablePath.calculatePitWith(maxPitDepth: pitDepth)
         let y = CGFloat(0)
         let holeStartingPointX = pitCenterX - (pitWidth/2)
         

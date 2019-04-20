@@ -98,7 +98,7 @@ public class AHPitView : UIView {
     func renderBorder() {
         
         //Initial calculations
-        let pitWidth = pitDepth * 2
+        let pitWidth = CGMutablePath.calculatePitWith(maxPitDepth: pitDepth)
         let y = CGFloat(0)
         let possibleDiggingWidth = bounds.width - pitWidth
         let holeStartingPointX = CGFloat(possibleDiggingWidth * pitPositionScale)

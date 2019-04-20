@@ -11,6 +11,11 @@ import UIKit
 
 extension CGMutablePath {
     
+    class func calculatePitWith(maxPitDepth: CGFloat) -> CGFloat {
+        
+        return maxPitDepth * 2.25
+    }
+    
     /**
      Draws the pit's path from given starting point.
      
@@ -21,7 +26,7 @@ extension CGMutablePath {
     @discardableResult
     public func addPit(toPath path: CGMutablePath, startingPointX : CGFloat, y: CGFloat, depth: CGFloat = 40, scale: CGFloat = 1) -> (guideRects: [CGRect], endPoint : CGPoint) {
         
-        let pitWidth = depth * 2 // Including the pit's domains
+        let pitWidth = CGMutablePath.calculatePitWith(maxPitDepth: depth) // Including the pit's domains
         let endPoint = CGPoint(x: startingPointX + pitWidth, y: y)
         
         let centerRectWidth = depth
