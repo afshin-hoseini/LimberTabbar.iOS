@@ -54,17 +54,11 @@ public class AHLimberTabBarItemView : UIView {
         UIView.animate(withDuration: 0.8, animations: {
             
             self.alpha = 0
-        }) { (finished) in
-            
-            self.isHidden = true
-        }
+        })
         
     }
     
     func show() {
-        
-        self.alpha = 0
-        self.isHidden = false
         
         UIView.animate(withDuration: 0.8) {
             
