@@ -55,8 +55,7 @@ class AHLimberTabbarBackgroundView : UIView {
         //Initializes border and guide rects layers
         
         borderLayer.bounds = bounds
-        borderLayer.fillColor = UIColor.red.cgColor
-        borderLayer.strokeColor = UIColor.red.cgColor
+        borderLayer.fillColor = UIColor.white.cgColor
         borderLayer.position = CGPoint(x: 0, y: 0)
         borderLayer.anchorPoint = CGPoint(x: 0, y: 0)
         borderLayer.lineJoin = .round
@@ -99,8 +98,15 @@ class AHLimberTabbarBackgroundView : UIView {
         return borderPath
     }
     
-    func animatePit(fromCenterX: CGFloat, toCenterX : CGFloat) {
+    func animateColor(to: UIColor) {
         
+        UIView.animate(withDuration: 1) {
+            
+            self.borderLayer.fillColor = to.cgColor
+        }
+    }
+    
+    func animatePit(fromCenterX: CGFloat, toCenterX : CGFloat) {
         
         let distance = (toCenterX-fromCenterX)
         let maxDistance = bounds.width
@@ -109,8 +115,6 @@ class AHLimberTabbarBackgroundView : UIView {
         
         let distanceRatio = abs(distance) / maxDistance
         let depthShrinking = maxDepthShrinking - ((maxDepthShrinking - minDepthShrinking) * distanceRatio)
-        
-        print("Shrinking : \(depthShrinking) - DistanceRatio: \(distanceRatio)")
         
         let anim = CAKeyframeAnimation(keyPath: #keyPath(CAShapeLayer.path))
         anim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)

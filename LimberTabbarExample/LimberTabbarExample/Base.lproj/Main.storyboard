@@ -88,11 +88,41 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <tabBarItem image="Face" id="vkY-82-Lpd"/>
-                                    <tabBarItem image="Alarm" id="NVT-af-e8g"/>
-                                    <tabBarItem image="Favorite" id="Iov-WU-5Ji"/>
-                                    <tabBarItem title="" image="FingerPrint" id="Gqz-Yn-owj"/>
-                                    <tabBarItem title="" image="Calendar" id="FPj-86-0hX"/>
+                                    <tabBarItem image="Face" id="vkY-82-Lpd" customClass="AHLimberTabbarItem" customModule="LimberTabbar">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                <color key="value" red="0.1529411765" green="0.6705882353" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </tabBarItem>
+                                    <tabBarItem image="Alarm" id="NVT-af-e8g" customClass="AHLimberTabbarItem" customModule="LimberTabbar">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                <color key="value" red="1" green="0.2274509804" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </tabBarItem>
+                                    <tabBarItem image="Favorite" id="Iov-WU-5Ji" customClass="AHLimberTabbarItem" customModule="LimberTabbar">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                <color key="value" red="1" green="0.38733411815068491" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </tabBarItem>
+                                    <tabBarItem title="" image="FingerPrint" id="Gqz-Yn-owj" customClass="AHLimberTabbarItem" customModule="LimberTabbar">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                <color key="value" red="1" green="0.75479298053255872" blue="0.15222944070262701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </tabBarItem>
+                                    <tabBarItem title="" image="Calendar" id="FPj-86-0hX" customClass="AHLimberTabbarItem" customModule="LimberTabbar">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                <color key="value" red="0.75559590099642415" green="0.31015233199653625" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </tabBarItem>
                                 </items>
                             </tabBar>
                         </subviews>

@@ -37,14 +37,22 @@ class AHSelectedTabItem: UIView {
             anim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
             anim.fillMode = .both
             
-//            layer.add(anim, forKey: #keyPath(CALayer.transform))
-            
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                 self.imgTabIcon.image = self.currentTab?.tabBarItem?.image
             }
             
+            if let tab = self.currentTab?.tabBarItem as? AHLimberTabbarItem, let bkg = tab.backgroundColor {
+                
+                
+                UIView.animate(withDuration: 0.1) {
+
+                    self.backgroundColor = bkg
+                }
+            }
+            
             UIView.animateKeyframes(withDuration: 0.6, delay: 0, options: [], animations: {
+                
                 
                 UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                     

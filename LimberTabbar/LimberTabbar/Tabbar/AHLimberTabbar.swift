@@ -75,6 +75,11 @@ public class AHLimberTabbar : UITabBar {
         
         isInitialized = true
         layoutItems()
+        
+    }
+    
+    public override func awakeFromNib() {
+        
         self.selectedTab = self.tabs[0]
     }
     
@@ -112,7 +117,13 @@ public class AHLimberTabbar : UITabBar {
         
         selectedTabHolder.currentTab?.show()
         tab.hide()
+        
+        if let tab = tab.tabBarItem as? AHLimberTabbarItem, let bkg = tab.backgroundColor {
+            
+            backgroundView.animateColor(to: bkg)
+        }
         backgroundView.animatePit(fromCenterX: (selectedTabHolder.currentTab ?? tabs[0]).center.x, toCenterX: tab.center.x)
+        
     
         if  let prevTab = selectedTabHolder.currentTab,
             let prevTabIndex = tabs.firstIndex(of: prevTab),
