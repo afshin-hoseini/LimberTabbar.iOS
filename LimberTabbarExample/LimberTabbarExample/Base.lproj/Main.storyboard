@@ -88,35 +88,17 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <tabBarItem image="Face" id="vkY-82-Lpd" customClass="AHLimberTabbarItem" customModule="LimberTabbar">
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                                <color key="value" red="0.1529411765" green="0.6705882353" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </tabBarItem>
-                                    <tabBarItem image="Alarm" id="NVT-af-e8g" customClass="AHLimberTabbarItem" customModule="LimberTabbar">
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                                <color key="value" red="1" green="0.2274509804" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </tabBarItem>
-                                    <tabBarItem image="Favorite" id="Iov-WU-5Ji" customClass="AHLimberTabbarItem" customModule="LimberTabbar">
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                                <color key="value" red="1" green="0.38733411815068491" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </tabBarItem>
+                                    <tabBarItem image="Face" id="vkY-82-Lpd" customClass="AHLimberTabbarItem" customModule="LimberTabbar"/>
+                                    <tabBarItem image="Alarm" id="NVT-af-e8g" customClass="AHLimberTabbarItem" customModule="LimberTabbar"/>
+                                    <tabBarItem image="Favorite" id="Iov-WU-5Ji" customClass="AHLimberTabbarItem" customModule="LimberTabbar"/>
                                     <tabBarItem title="" image="FingerPrint" id="Gqz-Yn-owj" customClass="AHLimberTabbarItem" customModule="LimberTabbar">
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                                <color key="value" red="1" green="0.75479298053255872" blue="0.15222944070262701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="iconTintColor">
+                                                <color key="value" red="1" green="0.38733411820000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </tabBarItem>
-                                    <tabBarItem title="" image="Calendar" id="FPj-86-0hX" customClass="AHLimberTabbarItem" customModule="LimberTabbar">
+                                    <tabBarItem title="" image="Calendar" id="FPj-86-0hX">
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
                                                 <color key="value" red="0.75559590099642415" green="0.31015233199653625" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -124,9 +106,11 @@
                                         </userDefinedRuntimeAttributes>
                                     </tabBarItem>
                                 </items>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="selectedImageTintColor" red="0.18377019095816666" green="0.19598462580444592" blue="0.21545470664060917" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tabBar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.2274509804" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="yTG-ik-cWx" firstAttribute="trailing" secondItem="y0D-tL-cS3" secondAttribute="trailing" id="75y-rL-uAl"/>
                             <constraint firstItem="qQl-ZD-f51" firstAttribute="centerY" secondItem="q7m-cF-3xH" secondAttribute="centerY" id="7ns-22-bF9"/>

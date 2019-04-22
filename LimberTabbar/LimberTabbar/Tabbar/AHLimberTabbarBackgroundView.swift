@@ -11,6 +11,7 @@ import UIKit
 
 class AHLimberTabbarBackgroundView : UIView {
     
+    var defaultBackgroundColor = UIColor.white
     var borderLayer = CAShapeLayer()
     let pitDepth = CGFloat(40)
     let maxDepth = CGFloat(40)
@@ -55,7 +56,7 @@ class AHLimberTabbarBackgroundView : UIView {
         //Initializes border and guide rects layers
         
         borderLayer.bounds = bounds
-        borderLayer.fillColor = UIColor.white.cgColor
+        borderLayer.fillColor = self.defaultBackgroundColor.cgColor
         borderLayer.position = CGPoint(x: 0, y: 0)
         borderLayer.anchorPoint = CGPoint(x: 0, y: 0)
         borderLayer.lineJoin = .round

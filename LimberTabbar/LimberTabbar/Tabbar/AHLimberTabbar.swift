@@ -12,6 +12,8 @@ import UIKit
 @IBDesignable
 public class AHLimberTabbar : UITabBar {
     
+    var defaultBackgroundColor : UIColor!
+    
     var _items: [UITabBarItem]?
     override public var items: [UITabBarItem]? {
         
@@ -45,11 +47,20 @@ public class AHLimberTabbar : UITabBar {
     
     func commonInit() {
         
+        //Picks the background color and clear them from view
+        self.defaultBackgroundColor = self.barTintColor ?? self.backgroundColor ?? UIColor.white
+        self.barTintColor = UIColor.clear
+        self.backgroundColor = UIColor.clear
         
+        //Initializes the selected tab holder view. (That circle view)
         self.selectedTabHolder = AHSelectedTabItem(size: 40)
+        self.selectedTabHolder.tintColor = self.tintColor
+        self.selectedTabHolder.backgroundColor = self.defaultBackgroundColor
         addSubview(selectedTabHolder)
         
+        //Initializes the background view which responsible to animate the pit under selected item.
         self.backgroundView = AHLimberTabbarBackgroundView(parent: self)
+        self.backgroundView.defaultBackgroundColor = self.defaultBackgroundColor
         
         //Initializing tabs holder view
         tabsHolderView = UIView()
@@ -104,6 +115,7 @@ public class AHLimberTabbar : UITabBar {
             
             let itemView = AHLimberTabBarItemView(tabBarItem: item)
             itemView.onSelected = self.select
+            itemView.iconTintColor = self.tintColor
             tabsHolderView.addSubview(itemView)
             
             itemView.frame = CGRect(x: x, y: 0, width: itemWidth, height: itemHeight)
@@ -115,13 +127,23 @@ public class AHLimberTabbar : UITabBar {
     
     func select(tab: AHLimberTabBarItemView) {
         
+        //Determines the tint and background colors
+        let iconTintColor = (tab.tabBarItem as? AHLimberTabbarItem)?.iconTintColor ?? tintColor ?? UIColor.gray
+        let backgroundColor = (tab.tabBarItem as? AHLimberTabbarItem)?.backgroundColor ?? self.defaultBackgroundColor!
+        
+        //The previously selected tab must be shown
         selectedTabHolder.currentTab?.show()
+        //The selected tab must be hidden
         tab.hide()
         
-        if let tab = tab.tabBarItem as? AHLimberTabbarItem, let bkg = tab.backgroundColor {
-            
-            backgroundView.animateColor(to: bkg)
+        //Changes the colors
+        selectedTabHolder.iconTintColor = iconTintColor
+        backgroundView.animateColor(to: backgroundColor)
+        
+        tabs.forEach { (tab) in
+            tab.iconTintColor = iconTintColor
         }
+        
         backgroundView.animatePit(fromCenterX: (selectedTabHolder.currentTab ?? tabs[0]).center.x, toCenterX: tab.center.x)
         
     
