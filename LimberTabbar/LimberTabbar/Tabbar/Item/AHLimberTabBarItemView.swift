@@ -19,7 +19,7 @@ public class AHLimberTabBarItemView : UIView {
         
         didSet {
             
-            UIView.animate(withDuration: 0.2) {
+            UIView.animate(withDuration: AnimationConfig.iconTintAnimDuration) {
                 
                 self.imgIcon.tintColor = self.iconTintColor
             }
@@ -29,7 +29,7 @@ public class AHLimberTabBarItemView : UIView {
     
     convenience init(tabBarItem : UITabBarItem) {
         
-        self.init(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        self.init(frame: CGRect.zero)
         self.tabBarItem = tabBarItem
         commonInit()
     }
@@ -46,7 +46,7 @@ public class AHLimberTabBarItemView : UIView {
     
     func pulse() {
         
-        UIView.animateKeyframes(withDuration: 0.6, delay: 0, options: [], animations: {
+        UIView.animateKeyframes(withDuration: AnimationConfig.duration, delay: 0, options: [], animations: {
             
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                 self.alpha = 0
@@ -56,14 +56,12 @@ public class AHLimberTabBarItemView : UIView {
                 self.alpha = 1
             })
             
-        }) { (f) in
-            
-        }
+        }, completion: nil)
     }
     
     func hide() {
         
-        UIView.animate(withDuration: 0.6, animations: {
+        UIView.animate(withDuration: AnimationConfig.duration, animations: {
             
             self.alpha = 0
         })
@@ -72,7 +70,7 @@ public class AHLimberTabBarItemView : UIView {
     
     func show() {
         
-        UIView.animate(withDuration: 0.6) {
+        UIView.animate(withDuration: AnimationConfig.duration) {
             
             self.alpha = 1
         }

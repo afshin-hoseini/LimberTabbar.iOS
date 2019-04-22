@@ -101,7 +101,7 @@ class AHLimberTabbarBackgroundView : UIView {
     
     func animateColor(to: UIColor) {
         
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: AnimationConfig.duration) {
             
             self.borderLayer.fillColor = to.cgColor
         }
@@ -125,7 +125,7 @@ class AHLimberTabbarBackgroundView : UIView {
             getBorderPath(for: toCenterX, depthScale:1)
         ]
         anim.keyTimes = [0,0.5,1]
-        anim.duration = CFTimeInterval(0.6)
+        anim.duration = AnimationConfig.duration
         anim.isRemovedOnCompletion = false
         anim.fillMode = .both
         

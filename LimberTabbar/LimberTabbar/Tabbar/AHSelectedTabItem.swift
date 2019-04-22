@@ -16,7 +16,7 @@ class AHSelectedTabItem: UIView {
         
         didSet {
             
-            UIView.animate(withDuration: 0.2) {
+            UIView.animate(withDuration: AnimationConfig.iconTintAnimDuration) {
                 
                 self.imgTabIcon.tintColor = self.iconTintColor
             }
@@ -29,38 +29,29 @@ class AHSelectedTabItem: UIView {
         
         didSet {
             
-            let fromCenterX = center.x
-            let toCenterX = currentTab?.center.x ?? center.x
-            let midCenterX = fromCenterX + (toCenterX-fromCenterX)/2
-            
-            let fromY = CGFloat(-10) + (frame.height / 2)
-            let midY = CGFloat(50) + (frame.height / 2)
-            let toY = CGFloat(-10) + (frame.height / 2)
-            
-            let anim = CAKeyframeAnimation(keyPath: #keyPath(CALayer.transform))
-            anim.values = [
-                
-                CGAffineTransform.init(translationX: fromCenterX, y: fromY),
-                CGAffineTransform.init(translationX: midCenterX, y: midY),
-                CGAffineTransform.init(translationX: toCenterX, y: toY)
-            ]
-            anim.duration = 0.8
-            anim.keyTimes=[0,0.5,1]
-            anim.isRemovedOnCompletion = false
-            anim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-            anim.fillMode = .both
+            //Animates the position on this view
             
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            //Changes the icon image on half of animation duration
+            DispatchQueue.main.asyncAfter(deadline: .now() + AnimationConfig.duration/2) {
                 self.imgTabIcon.image = self.currentTab?.tabBarItem?.image
             }
             
             //Background color animation
-            var backgroundColor = (self.currentTab?.tabBarItem as? AHLimberTabbarItem)?.backgroundColor ?? self.defaultBackgroundColor
-            UIView.animate(withDuration: 0.1) { self.backgroundColor = backgroundColor }
+            let backgroundColor = (self.currentTab?.tabBarItem as? AHLimberTabbarItem)?.backgroundColor ?? self.defaultBackgroundColor
+            UIView.animate(withDuration: AnimationConfig.duration / 1.5) { self.backgroundColor = backgroundColor }
             
             
-            UIView.animateKeyframes(withDuration: 0.6, delay: 0, options: [], animations: {
+            //Calculations
+            let fromCenterX = center.x
+            let toCenterX = currentTab?.center.x ?? center.x
+            let midCenterX = fromCenterX + (toCenterX-fromCenterX)/2
+            
+            let midY = CGFloat(50) + (frame.height / 2)
+            let toY = CGFloat(-10) + (frame.height / 2)
+            
+            //View position animation
+            UIView.animateKeyframes(withDuration: AnimationConfig.duration, delay: 0, options: [], animations: {
                 
                 
                 UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
@@ -73,9 +64,7 @@ class AHSelectedTabItem: UIView {
                     self.center = CGPoint(x: toCenterX, y: toY)
                 })
                 
-            }) { (finish) in
-                
-            }
+            }, completion: nil)
             
         }
     }
