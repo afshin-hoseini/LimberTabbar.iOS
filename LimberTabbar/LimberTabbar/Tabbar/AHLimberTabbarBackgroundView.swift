@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+/**
+ Shows the pit like background and responsible to animated the pit around the selected tab.
+ */
 class AHLimberTabbarBackgroundView : UIView {
     
     var defaultBackgroundColor = UIColor.white
@@ -51,6 +54,9 @@ class AHLimberTabbarBackgroundView : UIView {
         addLayers()
     }
     
+    /**
+     Adds and configure the layer which contains the pit-like path.
+    */
     func addLayers() {
         
         //Initializes border and guide rects layers
@@ -77,6 +83,9 @@ class AHLimberTabbarBackgroundView : UIView {
         borderLayer.path = getBorderPath(for: pitCenterX, depthScale: 1)
     }
     
+    /**
+     Creates the pit-like path according to the given pit center x point and depth scale.
+    */
     func getBorderPath(for pitCenterX: CGFloat, depthScale: CGFloat) -> CGMutablePath {
         
         //Initial calculations
@@ -99,6 +108,9 @@ class AHLimberTabbarBackgroundView : UIView {
         return borderPath
     }
     
+    /**
+     Animates background color.
+    */
     func animateColor(to: UIColor) {
         
         UIView.animate(withDuration: AnimationConfig.duration) {
@@ -107,6 +119,9 @@ class AHLimberTabbarBackgroundView : UIView {
         }
     }
     
+    /**
+     Moves and animates the pit-like thing to given centerX.
+    */
     func animatePit(fromCenterX: CGFloat, toCenterX : CGFloat) {
         
         let distance = (toCenterX-fromCenterX)

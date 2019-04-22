@@ -9,12 +9,19 @@
 import Foundation
 import UIKit
 
+/**
+ Extends `UITabBar` and implements some animations on item selection process.
+ */
 @IBDesignable
 public class AHLimberTabbar : UITabBar {
     
+    /**
+     Since both background and bar tint colors will be null, this variable will capture the color on initialization.
+    */
     var defaultBackgroundColor : UIColor!
     
     var _items: [UITabBarItem]?
+    /** Since the items variable is a calculated property, I had to do like this. */
     override public var items: [UITabBarItem]? {
         
         set {self._items = newValue}
@@ -23,9 +30,15 @@ public class AHLimberTabbar : UITabBar {
     
     var isInitialized = false
     var tabs = [AHLimberTabBarItemView]()
+    
+    /**This view will just hold all tabs and is useful to keep them separated from background view*/
     var tabsHolderView : UIView!
+    
+    /**Represents pit like background*/
     var backgroundView : AHLimberTabbarBackgroundView!
+    /**A circular view, holding the selectd tab item*/
     var selectedTabHolder : AHSelectedTabItem!
+    /**Triggers the selection process animation*/
     var selectedTab : AHLimberTabBarItemView? {
         
         didSet {
@@ -124,7 +137,9 @@ public class AHLimberTabbar : UITabBar {
         })
     }
     
-    
+    /**
+     Performs and controls the selectetion process animation.
+     */
     func select(tab: AHLimberTabBarItemView) {
         
         //Determines the tint and background colors
@@ -164,12 +179,4 @@ public class AHLimberTabbar : UITabBar {
         selectedTabHolder.currentTab = tab
         
     }
-    
-    
-}
-
-
-extension AHLimberTabbar : CAAnimationDelegate {
-    
-    
 }
