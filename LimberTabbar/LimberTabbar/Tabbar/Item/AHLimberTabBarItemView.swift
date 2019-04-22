@@ -11,9 +11,21 @@ import UIKit
 
 public class AHLimberTabBarItemView : UIView {
     
-    var imgIcon : UIImageView?
+    var imgIcon : UIImageView!
     var tabBarItem : UITabBarItem?
     var onSelected : ((_:AHLimberTabBarItemView)->Void)!
+    
+    var iconTintColor = UIColor.gray {
+        
+        didSet {
+            
+            UIView.animate(withDuration: 0.2) {
+                
+                self.imgIcon.tintColor = self.iconTintColor
+            }
+            
+        }
+    }
     
     convenience init(tabBarItem : UITabBarItem) {
         
@@ -34,7 +46,7 @@ public class AHLimberTabBarItemView : UIView {
     
     func pulse() {
         
-        UIView.animateKeyframes(withDuration: 0.8, delay: 0, options: [], animations: {
+        UIView.animateKeyframes(withDuration: 0.6, delay: 0, options: [], animations: {
             
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                 self.alpha = 0
@@ -51,7 +63,7 @@ public class AHLimberTabBarItemView : UIView {
     
     func hide() {
         
-        UIView.animate(withDuration: 0.8, animations: {
+        UIView.animate(withDuration: 0.6, animations: {
             
             self.alpha = 0
         })
@@ -60,7 +72,7 @@ public class AHLimberTabBarItemView : UIView {
     
     func show() {
         
-        UIView.animate(withDuration: 0.8) {
+        UIView.animate(withDuration: 0.6) {
             
             self.alpha = 1
         }
@@ -68,10 +80,10 @@ public class AHLimberTabBarItemView : UIView {
     
     func commonInit() {
         
-        let imgIcon = UIImageView (frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        self.imgIcon = UIImageView (frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         imgIcon.image = self.tabBarItem?.image
         imgIcon.contentMode = .scaleAspectFit
-        imgIcon.tintColor = UIColor.white
+        imgIcon.tintColor = self.iconTintColor
         
         addSubview(imgIcon)
         

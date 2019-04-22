@@ -11,6 +11,19 @@ import UIKit
 
 class AHSelectedTabItem: UIView {
     
+    var defaultBackgroundColor : UIColor = UIColor.white
+    var iconTintColor = UIColor.gray {
+        
+        didSet {
+            
+            UIView.animate(withDuration: 0.2) {
+                
+                self.imgTabIcon.tintColor = self.iconTintColor
+            }
+            
+        }
+    }
+    
     var imgTabIcon : UIImageView!
     var currentTab : AHLimberTabBarItemView? {
         
@@ -37,14 +50,18 @@ class AHSelectedTabItem: UIView {
             anim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
             anim.fillMode = .both
             
-//            layer.add(anim, forKey: #keyPath(CALayer.transform))
-            
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                 self.imgTabIcon.image = self.currentTab?.tabBarItem?.image
             }
             
+            //Background color animation
+            var backgroundColor = (self.currentTab?.tabBarItem as? AHLimberTabbarItem)?.backgroundColor ?? self.defaultBackgroundColor
+            UIView.animate(withDuration: 0.1) { self.backgroundColor = backgroundColor }
+            
+            
             UIView.animateKeyframes(withDuration: 0.6, delay: 0, options: [], animations: {
+                
                 
                 UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                     
@@ -90,7 +107,7 @@ class AHSelectedTabItem: UIView {
         layer.shadowRadius = 2
         
         imgTabIcon = UIImageView()
-        imgTabIcon.tintColor = UIColor.white
+        imgTabIcon.tintColor = self.iconTintColor
         addSubview(imgTabIcon)
         
         imgTabIcon.translatesAutoresizingMaskIntoConstraints = false
@@ -101,7 +118,7 @@ class AHSelectedTabItem: UIView {
                 imgTabIcon.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
                 imgTabIcon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
                 imgTabIcon.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5)
-                ])
+            ])
         }
     }
 }

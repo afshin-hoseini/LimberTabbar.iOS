@@ -12,9 +12,10 @@
 		F4312C472259E17100EF67FC /* AHPitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4312C462259E17100EF67FC /* AHPitView.swift */; };
 		F4312C49225A3AC700EF67FC /* AHLimberTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4312C48225A3AC700EF67FC /* AHLimberTabbar.swift */; };
 		F4312C4C225A4AEE00EF67FC /* ItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4312C4B225A4AEE00EF67FC /* ItemView.xib */; };
-		F4312C4F225A4D8100EF67FC /* AHLimberTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4312C4E225A4D8100EF67FC /* AHLimberTabBarItem.swift */; };
+		F4312C4F225A4D8100EF67FC /* AHLimberTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4312C4E225A4D8100EF67FC /* AHLimberTabBarItemView.swift */; };
 		F4C65B522269F167007909F6 /* AHSelectedTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C65B512269F167007909F6 /* AHSelectedTabItem.swift */; };
 		F4C65B54226B0946007909F6 /* AHLimberTabbarBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C65B53226B0946007909F6 /* AHLimberTabbarBackgroundView.swift */; };
+		F4C65B56226CE247007909F6 /* AHLimberTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C65B55226CE247007909F6 /* AHLimberTabbarItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,9 +26,10 @@
 		F4312C462259E17100EF67FC /* AHPitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHPitView.swift; sourceTree = "<group>"; };
 		F4312C48225A3AC700EF67FC /* AHLimberTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHLimberTabbar.swift; sourceTree = "<group>"; };
 		F4312C4B225A4AEE00EF67FC /* ItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemView.xib; sourceTree = "<group>"; };
-		F4312C4E225A4D8100EF67FC /* AHLimberTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHLimberTabBarItem.swift; sourceTree = "<group>"; };
+		F4312C4E225A4D8100EF67FC /* AHLimberTabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHLimberTabBarItemView.swift; sourceTree = "<group>"; };
 		F4C65B512269F167007909F6 /* AHSelectedTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHSelectedTabItem.swift; sourceTree = "<group>"; };
 		F4C65B53226B0946007909F6 /* AHLimberTabbarBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHLimberTabbarBackgroundView.swift; sourceTree = "<group>"; };
+		F4C65B55226CE247007909F6 /* AHLimberTabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHLimberTabbarItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				F4312C4B225A4AEE00EF67FC /* ItemView.xib */,
-				F4312C4E225A4D8100EF67FC /* AHLimberTabBarItem.swift */,
+				F4312C4E225A4D8100EF67FC /* AHLimberTabBarItemView.swift */,
+				F4C65B55226CE247007909F6 /* AHLimberTabbarItem.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -179,8 +182,9 @@
 			files = (
 				F4C65B54226B0946007909F6 /* AHLimberTabbarBackgroundView.swift in Sources */,
 				F4312C49225A3AC700EF67FC /* AHLimberTabbar.swift in Sources */,
+				F4C65B56226CE247007909F6 /* AHLimberTabbarItem.swift in Sources */,
 				F4312C472259E17100EF67FC /* AHPitView.swift in Sources */,
-				F4312C4F225A4D8100EF67FC /* AHLimberTabBarItem.swift in Sources */,
+				F4312C4F225A4D8100EF67FC /* AHLimberTabBarItemView.swift in Sources */,
 				F4312C432259D39300EF67FC /* CGMutablePath+pit.swift in Sources */,
 				F4C65B522269F167007909F6 /* AHSelectedTabItem.swift in Sources */,
 			);
