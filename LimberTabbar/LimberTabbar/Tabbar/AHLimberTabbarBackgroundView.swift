@@ -16,8 +16,7 @@ class AHLimberTabbarBackgroundView : UIView {
     
     var defaultBackgroundColor = UIColor.white
     var borderLayer = CAShapeLayer()
-    let pitDepth = CGFloat(40)
-    let maxDepth = CGFloat(40)
+    var pitDepth = CGFloat(40)
     
     convenience init(parent: UIView) {
         

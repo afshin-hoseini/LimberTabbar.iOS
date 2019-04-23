@@ -68,11 +68,15 @@ public class AHLimberTabbar : UITabBar {
         self.shadowImage = UIImage()
     }
     
+    private func getPitDepth() -> CGFloat {
+        
+        return bounds.height * 0.8
+    }
     
     public override func awakeFromNib() {
         
         //Initializes the selected tab holder view. (That circle view)
-        self.selectedTabHolder = AHSelectedTabItem(size: 40)
+        self.selectedTabHolder = AHSelectedTabItem(size: getPitDepth())
         self.selectedTabHolder.tintColor = self.tintColor
         self.selectedTabHolder.backgroundColor = self.defaultBackgroundColor
         addSubview(selectedTabHolder)
@@ -109,6 +113,12 @@ public class AHLimberTabbar : UITabBar {
         boundObserver = self.observe(\.bounds, options: NSKeyValueObservingOptions.new) { (observer, value) in
             
             DispatchQueue.main.async {
+                
+                let pitDepth = self.getPitDepth()
+                self.backgroundView.pitDepth = pitDepth
+                self.selectedTabHolder.frame.size = CGSize(width: pitDepth, height: pitDepth)
+                self.selectedTabHolder.layer.cornerRadius = self.selectedTabHolder.frame.width/2
+                
                 self.animateSelection(to: self.selectedTab)
             }
         }
