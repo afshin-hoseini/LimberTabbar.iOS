@@ -9,12 +9,20 @@
 import Foundation
 import UIKit
 
+/**
+ Extends `UITabBar` and implements some animations on item selection process.
+ */
 @IBDesignable
 public class AHLimberTabbar : UITabBar {
     
+    var boundObserver : NSKeyValueObservation?
+    /**
+     Since both background and bar tint colors will be null, this variable will capture the color on initialization.
+    */
     var defaultBackgroundColor : UIColor!
     
     var _items: [UITabBarItem]?
+    /** Since the items variable is a calculated property, I had to do like this. */
     override public var items: [UITabBarItem]? {
         
         set {self._items = newValue}
@@ -23,15 +31,18 @@ public class AHLimberTabbar : UITabBar {
     
     var isInitialized = false
     var tabs = [AHLimberTabBarItemView]()
-    var tabsHolderView : UIView!
+    
+    /**A horizontal stack view to keep items in a row*/
+    var tabsHolderView : UIStackView!
+    
+    /**Represents pit like background*/
     var backgroundView : AHLimberTabbarBackgroundView!
+    /**A circular view, holding the selectd tab item*/
     var selectedTabHolder : AHSelectedTabItem!
-    var selectedTab : AHLimberTabBarItemView? {
+    /**Triggers the selection process animation*/
+    var selectedTab : AHLimberTabBarItemView! {
         
-        didSet {
-            
-            self.select(tab: selectedTab!)
-        }
+        didSet { self.animateSelection(to: selectedTab) }
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -52,10 +63,22 @@ public class AHLimberTabbar : UITabBar {
         self.barTintColor = UIColor.clear
         self.backgroundColor = UIColor.clear
         
+        //Removes default background images
+        self.backgroundImage = UIImage()
+        self.shadowImage = UIImage()
+    }
+    
+    private func getPitDepth() -> CGFloat {
+        
+        return bounds.height * 0.8
+    }
+    
+    public override func awakeFromNib() {
+        
         //Initializes the selected tab holder view. (That circle view)
-        self.selectedTabHolder = AHSelectedTabItem(size: 40)
+        self.selectedTabHolder = AHSelectedTabItem(size: getPitDepth())
         self.selectedTabHolder.tintColor = self.tintColor
-        self.selectedTabHolder.backgroundColor = self.defaultBackgroundColor
+        self.selectedTabHolder.defaultBackgroundColor = self.defaultBackgroundColor
         addSubview(selectedTabHolder)
         
         //Initializes the background view which responsible to animate the pit under selected item.
@@ -63,11 +86,14 @@ public class AHLimberTabbar : UITabBar {
         self.backgroundView.defaultBackgroundColor = self.defaultBackgroundColor
         
         //Initializing tabs holder view
-        tabsHolderView = UIView()
+        tabsHolderView = UIStackView()
+        tabsHolderView.distribution = .fillEqually
+        tabsHolderView.axis = .horizontal
+        tabsHolderView.alignment = .fill
         addSubview(tabsHolderView)
         
         if #available(iOS 9.0, *) {
-        
+            
             tabsHolderView.translatesAutoresizingMaskIntoConstraints = false
             
             NSLayoutConstraint.activate([
@@ -76,22 +102,35 @@ public class AHLimberTabbar : UITabBar {
                 tabsHolderView.leadingAnchor.constraint(equalTo: leadingAnchor),
                 tabsHolderView.trailingAnchor.constraint(equalTo: trailingAnchor),
                 tabsHolderView.bottomAnchor.constraint(equalTo: bottomAnchor)
-            ])
+                ])
         }
-        
-        
-        
-        self.backgroundImage = UIImage()
-        self.shadowImage = UIImage()
         
         isInitialized = true
         layoutItems()
+        self.selectedTab = self.tabs[0]
         
+        
+        boundObserver = backgroundView.observe(
+        \.bounds,
+        options: NSKeyValueObservingOptions.ArrayLiteralElement(arrayLiteral: .initial, .new)) {
+            
+            (observer, value) in
+            
+            self.reselectCurrentTab()
+        }
     }
     
-    public override func awakeFromNib() {
+    private func reselectCurrentTab() {
         
-        self.selectedTab = self.tabs[0]
+        DispatchQueue.main.async {
+            
+            let pitDepth = self.getPitDepth()
+            self.backgroundView.pitDepth = pitDepth
+            self.selectedTabHolder.frame.size = CGSize(width: pitDepth, height: pitDepth)
+            self.selectedTabHolder.layer.cornerRadius = self.selectedTabHolder.frame.width/2
+            
+            self.animateSelection(to: self.selectedTab)
+        }
     }
     
     public override func setItems(_ items: [UITabBarItem]?, animated: Bool) {
@@ -101,31 +140,43 @@ public class AHLimberTabbar : UITabBar {
         if(isInitialized) {
             
             layoutItems()
+            self.selectedTab = self.tabs[0]
+            
         }
         
     }
     
+    private func onItemTapped(tab: AHLimberTabBarItemView) {
+        
+        self.selectedTab = tab
+    }
+    
     func layoutItems() {
         
-        let itemHeight = bounds.height
-        let itemWidth = bounds.width / CGFloat(items?.count ?? 1)
-        var x = CGFloat(0)
+        //Removes old tabs
+        tabs.forEach { (tab) in
+            
+            tabsHolderView.removeArrangedSubview(tab)
+            tab.removeFromSuperview()
+        }
+        tabs.removeAll()
         
         items?.forEach({ (item) in
             
             let itemView = AHLimberTabBarItemView(tabBarItem: item)
-            itemView.onSelected = self.select
+            itemView.onSelected = self.onItemTapped
             itemView.iconTintColor = self.tintColor
-            tabsHolderView.addSubview(itemView)
-            
-            itemView.frame = CGRect(x: x, y: 0, width: itemWidth, height: itemHeight)
-            x += itemWidth
+            tabsHolderView.addArrangedSubview(itemView)
             tabs.append(itemView)
         })
+        
+        tabsHolderView.layoutIfNeeded()
     }
     
-    
-    func select(tab: AHLimberTabBarItemView) {
+    /**
+     Performs and controls the selectetion process animation.
+     */
+    private func animateSelection(to tab: AHLimberTabBarItemView) {
         
         //Determines the tint and background colors
         let iconTintColor = (tab.tabBarItem as? AHLimberTabbarItem)?.iconTintColor ?? tintColor ?? UIColor.gray
@@ -164,12 +215,4 @@ public class AHLimberTabbar : UITabBar {
         selectedTabHolder.currentTab = tab
         
     }
-    
-    
-}
-
-
-extension AHLimberTabbar : CAAnimationDelegate {
-    
-    
 }

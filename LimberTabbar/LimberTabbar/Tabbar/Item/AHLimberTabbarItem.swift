@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+/**
+ A customized `UITabBarItem`.
+ */
 public class AHLimberTabbarItem : UITabBarItem {
     
     @IBInspectable

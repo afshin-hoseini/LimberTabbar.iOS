@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+/**
+ A wrapper which animates the selected tab item, inside a circular view.
+ */
 class AHSelectedTabItem: UIView {
     
     var defaultBackgroundColor : UIColor = UIColor.white
@@ -25,6 +28,10 @@ class AHSelectedTabItem: UIView {
     }
     
     var imgTabIcon : UIImageView!
+    
+    /**
+     Determines the selected tab view and perform related animates
+    */
     var currentTab : AHLimberTabBarItemView? {
         
         didSet {

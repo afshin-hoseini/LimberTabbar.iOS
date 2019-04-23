@@ -9,21 +9,22 @@
 import Foundation
 import UIKit
 
+/**
+ A warpper view for `UITabBarItem`. It applies animations on icon's tint color and responsible to handle the icon visibility.
+ */
 public class AHLimberTabBarItemView : UIView {
     
     var imgIcon : UIImageView!
     var tabBarItem : UITabBarItem?
+    /**A closure which will be invoked when this tabbar item view tapped*/
     var onSelected : ((_:AHLimberTabBarItemView)->Void)!
     
+    /**Animatable. The icon's tint color.*/
     var iconTintColor = UIColor.gray {
         
         didSet {
             
-            UIView.animate(withDuration: AnimationConfig.iconTintAnimDuration) {
-                
-                self.imgIcon.tintColor = self.iconTintColor
-            }
-            
+            UIView.animate(withDuration: AnimationConfig.iconTintAnimDuration) { self.imgIcon.tintColor = self.iconTintColor }
         }
     }
     
@@ -44,6 +45,10 @@ public class AHLimberTabBarItemView : UIView {
         commonInit()
     }
     
+    /**
+     Performs a pulse animation in which the icon becomes fully transparent and then become opaque again.
+     This animation would be performed when the item is place between the previous and selected tab.
+    */
     func pulse() {
         
         UIView.animateKeyframes(withDuration: AnimationConfig.duration, delay: 0, options: [], animations: {
@@ -59,6 +64,9 @@ public class AHLimberTabBarItemView : UIView {
         }, completion: nil)
     }
     
+    /**
+     Hides the item by changing the alpha parameter to zero.
+    */
     func hide() {
         
         UIView.animate(withDuration: AnimationConfig.duration, animations: {
@@ -68,6 +76,9 @@ public class AHLimberTabBarItemView : UIView {
         
     }
     
+    /**
+     Shows the item by changing the alpha parameter to one.
+    */
     func show() {
         
         UIView.animate(withDuration: AnimationConfig.duration) {
@@ -76,8 +87,12 @@ public class AHLimberTabBarItemView : UIView {
         }
     }
     
+    /**
+     Initializes the view and subviews
+    */
     func commonInit() {
         
+        //Initializes the icon image viewer
         self.imgIcon = UIImageView (frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         imgIcon.image = self.tabBarItem?.image
         imgIcon.contentMode = .scaleAspectFit
@@ -98,7 +113,7 @@ public class AHLimberTabBarItemView : UIView {
                 ])
         }
         
-        
+        //Implements a tap gesture on view
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onTapped(recognizer:)))
         addGestureRecognizer(tapGesture)
         

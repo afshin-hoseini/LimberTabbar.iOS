@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+    Includes animations' config and duration.
+ */
 class AnimationConfig {
     
     static let duration = CFTimeInterval(0.5)
