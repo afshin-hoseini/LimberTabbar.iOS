@@ -15,6 +15,7 @@ import UIKit
 @IBDesignable
 public class AHLimberTabbar : UITabBar {
     
+    var boundObserver : NSKeyValueObservation?
     /**
      Since both background and bar tint colors will be null, this variable will capture the color on initialization.
     */
@@ -31,20 +32,17 @@ public class AHLimberTabbar : UITabBar {
     var isInitialized = false
     var tabs = [AHLimberTabBarItemView]()
     
-    /**This view will just hold all tabs and is useful to keep them separated from background view*/
-    var tabsHolderView : UIView!
+    /**A horizontal stack view to keep items in a row*/
+    var tabsHolderView : UIStackView!
     
     /**Represents pit like background*/
     var backgroundView : AHLimberTabbarBackgroundView!
     /**A circular view, holding the selectd tab item*/
     var selectedTabHolder : AHSelectedTabItem!
     /**Triggers the selection process animation*/
-    var selectedTab : AHLimberTabBarItemView? {
+    var selectedTab : AHLimberTabBarItemView! {
         
-        didSet {
-            
-            self.select(tab: selectedTab!)
-        }
+        didSet { self.animateSelection(to: selectedTab) }
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -65,6 +63,14 @@ public class AHLimberTabbar : UITabBar {
         self.barTintColor = UIColor.clear
         self.backgroundColor = UIColor.clear
         
+        //Removes default background images
+        self.backgroundImage = UIImage()
+        self.shadowImage = UIImage()
+    }
+    
+    
+    public override func awakeFromNib() {
+        
         //Initializes the selected tab holder view. (That circle view)
         self.selectedTabHolder = AHSelectedTabItem(size: 40)
         self.selectedTabHolder.tintColor = self.tintColor
@@ -76,11 +82,14 @@ public class AHLimberTabbar : UITabBar {
         self.backgroundView.defaultBackgroundColor = self.defaultBackgroundColor
         
         //Initializing tabs holder view
-        tabsHolderView = UIView()
+        tabsHolderView = UIStackView()
+        tabsHolderView.distribution = .fillEqually
+        tabsHolderView.axis = .horizontal
+        tabsHolderView.alignment = .fill
         addSubview(tabsHolderView)
         
         if #available(iOS 9.0, *) {
-        
+            
             tabsHolderView.translatesAutoresizingMaskIntoConstraints = false
             
             NSLayoutConstraint.activate([
@@ -89,23 +98,22 @@ public class AHLimberTabbar : UITabBar {
                 tabsHolderView.leadingAnchor.constraint(equalTo: leadingAnchor),
                 tabsHolderView.trailingAnchor.constraint(equalTo: trailingAnchor),
                 tabsHolderView.bottomAnchor.constraint(equalTo: bottomAnchor)
-            ])
+                ])
         }
-        
-        
-        
-        self.backgroundImage = UIImage()
-        self.shadowImage = UIImage()
         
         isInitialized = true
         layoutItems()
+        self.selectedTab = self.tabs[0]
         
+        
+        boundObserver = self.observe(\.bounds, options: NSKeyValueObservingOptions.new) { (observer, value) in
+            
+            DispatchQueue.main.async {
+                self.animateSelection(to: self.selectedTab)
+            }
+        }
     }
     
-    public override func awakeFromNib() {
-        
-        self.selectedTab = self.tabs[0]
-    }
     
     public override func setItems(_ items: [UITabBarItem]?, animated: Bool) {
         
@@ -118,21 +126,25 @@ public class AHLimberTabbar : UITabBar {
         
     }
     
+    private func onItemTapped(tab: AHLimberTabBarItemView) {
+        
+        self.selectedTab = tab
+    }
+    
     func layoutItems() {
         
-        let itemHeight = bounds.height
-        let itemWidth = bounds.width / CGFloat(items?.count ?? 1)
-        var x = CGFloat(0)
+        //Removes old tabs
+        tabs.forEach { (tab) in
+            tabsHolderView.removeArrangedSubview(tab)
+        }
+        tabs.removeAll()
         
         items?.forEach({ (item) in
             
             let itemView = AHLimberTabBarItemView(tabBarItem: item)
-            itemView.onSelected = self.select
+            itemView.onSelected = self.onItemTapped
             itemView.iconTintColor = self.tintColor
-            tabsHolderView.addSubview(itemView)
-            
-            itemView.frame = CGRect(x: x, y: 0, width: itemWidth, height: itemHeight)
-            x += itemWidth
+            tabsHolderView.addArrangedSubview(itemView)
             tabs.append(itemView)
         })
     }
@@ -140,7 +152,7 @@ public class AHLimberTabbar : UITabBar {
     /**
      Performs and controls the selectetion process animation.
      */
-    func select(tab: AHLimberTabBarItemView) {
+    private func animateSelection(to tab: AHLimberTabBarItemView) {
         
         //Determines the tint and background colors
         let iconTintColor = (tab.tabBarItem as? AHLimberTabbarItem)?.iconTintColor ?? tintColor ?? UIColor.gray

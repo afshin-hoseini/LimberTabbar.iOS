@@ -21,7 +21,7 @@ class AHLimberTabbarBackgroundView : UIView {
     
     convenience init(parent: UIView) {
         
-        self.init(frame: parent.frame)
+        self.init(frame: parent.bounds)
         
         
         parent.addSubview(self)
