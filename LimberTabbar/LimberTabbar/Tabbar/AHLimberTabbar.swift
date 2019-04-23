@@ -78,7 +78,7 @@ public class AHLimberTabbar : UITabBar {
         //Initializes the selected tab holder view. (That circle view)
         self.selectedTabHolder = AHSelectedTabItem(size: getPitDepth())
         self.selectedTabHolder.tintColor = self.tintColor
-        self.selectedTabHolder.backgroundColor = self.defaultBackgroundColor
+        self.selectedTabHolder.defaultBackgroundColor = self.defaultBackgroundColor
         addSubview(selectedTabHolder)
         
         //Initializes the background view which responsible to animate the pit under selected item.
@@ -110,20 +110,28 @@ public class AHLimberTabbar : UITabBar {
         self.selectedTab = self.tabs[0]
         
         
-        boundObserver = self.observe(\.bounds, options: NSKeyValueObservingOptions.new) { (observer, value) in
+        boundObserver = backgroundView.observe(
+        \.bounds,
+        options: NSKeyValueObservingOptions.ArrayLiteralElement(arrayLiteral: .initial, .new)) {
             
-            DispatchQueue.main.async {
-                
-                let pitDepth = self.getPitDepth()
-                self.backgroundView.pitDepth = pitDepth
-                self.selectedTabHolder.frame.size = CGSize(width: pitDepth, height: pitDepth)
-                self.selectedTabHolder.layer.cornerRadius = self.selectedTabHolder.frame.width/2
-                
-                self.animateSelection(to: self.selectedTab)
-            }
+            (observer, value) in
+            
+            self.reselectCurrentTab()
         }
     }
     
+    private func reselectCurrentTab() {
+        
+        DispatchQueue.main.async {
+            
+            let pitDepth = self.getPitDepth()
+            self.backgroundView.pitDepth = pitDepth
+            self.selectedTabHolder.frame.size = CGSize(width: pitDepth, height: pitDepth)
+            self.selectedTabHolder.layer.cornerRadius = self.selectedTabHolder.frame.width/2
+            
+            self.animateSelection(to: self.selectedTab)
+        }
+    }
     
     public override func setItems(_ items: [UITabBarItem]?, animated: Bool) {
         
@@ -132,6 +140,8 @@ public class AHLimberTabbar : UITabBar {
         if(isInitialized) {
             
             layoutItems()
+            self.selectedTab = self.tabs[0]
+            
         }
         
     }
@@ -145,7 +155,9 @@ public class AHLimberTabbar : UITabBar {
         
         //Removes old tabs
         tabs.forEach { (tab) in
+            
             tabsHolderView.removeArrangedSubview(tab)
+            tab.removeFromSuperview()
         }
         tabs.removeAll()
         
@@ -157,6 +169,8 @@ public class AHLimberTabbar : UITabBar {
             tabsHolderView.addArrangedSubview(itemView)
             tabs.append(itemView)
         })
+        
+        tabsHolderView.layoutIfNeeded()
     }
     
     /**
