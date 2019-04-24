@@ -6,7 +6,7 @@ target 'LimberTabbarExample' do
   use_frameworks!
 
   # Pods for LimberTabbarExample
-  pod 'LimberTabbar', :path => '../LimberTabbar'
+  pod 'LimberTabbar', :path => '..'
 
 end
 
