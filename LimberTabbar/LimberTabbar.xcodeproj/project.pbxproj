@@ -14,6 +14,7 @@
 		F4312C4C225A4AEE00EF67FC /* ItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4312C4B225A4AEE00EF67FC /* ItemView.xib */; };
 		F4312C4F225A4D8100EF67FC /* AHLimberTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4312C4E225A4D8100EF67FC /* AHLimberTabBarItemView.swift */; };
 		F453D357226E043A006C0F71 /* AnimationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F453D356226E043A006C0F71 /* AnimationConfig.swift */; };
+		F49AD86F226F780A00E2AB24 /* AHLimberTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49AD86E226F780A00E2AB24 /* AHLimberTabbarController.swift */; };
 		F4C65B522269F167007909F6 /* AHSelectedTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C65B512269F167007909F6 /* AHSelectedTabItem.swift */; };
 		F4C65B54226B0946007909F6 /* AHLimberTabbarBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C65B53226B0946007909F6 /* AHLimberTabbarBackgroundView.swift */; };
 		F4C65B56226CE247007909F6 /* AHLimberTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C65B55226CE247007909F6 /* AHLimberTabbarItem.swift */; };
@@ -29,6 +30,7 @@
 		F4312C4B225A4AEE00EF67FC /* ItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemView.xib; sourceTree = "<group>"; };
 		F4312C4E225A4D8100EF67FC /* AHLimberTabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHLimberTabBarItemView.swift; sourceTree = "<group>"; };
 		F453D356226E043A006C0F71 /* AnimationConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationConfig.swift; sourceTree = "<group>"; };
+		F49AD86E226F780A00E2AB24 /* AHLimberTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHLimberTabbarController.swift; sourceTree = "<group>"; };
 		F4C65B512269F167007909F6 /* AHSelectedTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHSelectedTabItem.swift; sourceTree = "<group>"; };
 		F4C65B53226B0946007909F6 /* AHLimberTabbarBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHLimberTabbarBackgroundView.swift; sourceTree = "<group>"; };
 		F4C65B55226CE247007909F6 /* AHLimberTabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHLimberTabbarItem.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				F4C65B512269F167007909F6 /* AHSelectedTabItem.swift */,
 				F4C65B53226B0946007909F6 /* AHLimberTabbarBackgroundView.swift */,
 				F453D356226E043A006C0F71 /* AnimationConfig.swift */,
+				F49AD86E226F780A00E2AB24 /* AHLimberTabbarController.swift */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				F4312C432259D39300EF67FC /* CGMutablePath+pit.swift in Sources */,
 				F453D357226E043A006C0F71 /* AnimationConfig.swift in Sources */,
 				F4C65B522269F167007909F6 /* AHSelectedTabItem.swift in Sources */,
+				F49AD86F226F780A00E2AB24 /* AHLimberTabbarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

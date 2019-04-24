@@ -42,7 +42,10 @@ public class AHLimberTabbar : UITabBar {
     /**Triggers the selection process animation*/
     var selectedTab : AHLimberTabBarItemView! {
         
-        didSet { self.animateSelection(to: selectedTab) }
+        didSet {
+            self.animateSelection(to: selectedTab)
+            
+        }
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -56,7 +59,18 @@ public class AHLimberTabbar : UITabBar {
         commonInit()
     }
     
+    
+    var itemObserver : NSKeyValueObservation?
+    
     func commonInit() {
+        
+        itemObserver = observe(\.selectedItem, changeHandler: { (ob, v) in
+            
+            if let selectedItem = self.selectedItem, let index = self.items?.firstIndex(of: selectedItem) {
+                self.selectedTab = self.tabs[index]
+            }
+        })
+        
         
         //Picks the background color and clear them from view
         self.defaultBackgroundColor = self.barTintColor ?? self.backgroundColor ?? UIColor.white
@@ -140,7 +154,14 @@ public class AHLimberTabbar : UITabBar {
         if(isInitialized) {
             
             layoutItems()
-            self.selectedTab = self.tabs[0]
+            
+            var selectedIndex = 0
+            if let tabBarItem = self.selectedTab.tabBarItem, let index = self.items?.firstIndex(of: tabBarItem){
+                
+                selectedIndex = index
+            }
+            
+            self.selectedTab = self.tabs[selectedIndex]
             
         }
         
@@ -149,6 +170,7 @@ public class AHLimberTabbar : UITabBar {
     private func onItemTapped(tab: AHLimberTabBarItemView) {
         
         self.selectedTab = tab
+        delegate?.tabBar!(self, didSelect: tab.tabBarItem!)
     }
     
     func layoutItems() {
