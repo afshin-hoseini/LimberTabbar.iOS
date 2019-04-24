@@ -9,12 +9,13 @@
 import UIKit
 import LimberTabbar
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITabBarDelegate {
 
     @IBOutlet weak var pitView: AHPitView!
     @IBOutlet weak var slider_pitPosition: UISlider!
     @IBOutlet weak var slider_pitDepthScale: UISlider!
     @IBOutlet weak var switch_guideSquares: UISwitch!
+    @IBOutlet weak var tabbar: AHLimberTabbar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,8 @@ class ViewController: UIViewController {
         pitView.pitDepthScale = CGFloat(slider_pitDepthScale.value)
         pitView.pitPositionScale = CGFloat(slider_pitPosition.value)
         pitView.showRects = switch_guideSquares.isOn
+        tabbar.delegate = self
+        
     }
 
     @IBAction func onPitPositionChanged(_ slider: UISlider) {
@@ -36,6 +39,10 @@ class ViewController: UIViewController {
     
     @IBAction func onGuideSquaresSwitchValueChanged(_ sender: UISwitch) {
         pitView.showRects = sender.isOn
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        print("Item selected")
     }
 }
 
