@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'LimberTabbar'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of LimberTabbar.'
+  s.summary          = 'Yet another tabbar with smooth animation.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -26,7 +26,7 @@ TODO: Add long description of the pod here.
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'afshin.hoseini@gmail.com' => 'afshin.hoseini@gmail.com' }
   s.source           = { :git => 'https://github.com/afshin.hoseini@gmail.com/LimberTabbar.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  # s.social_media_url = 'https://twitter.com/hoseini_afshin'
 
   s.ios.deployment_target = '8.0'
 
