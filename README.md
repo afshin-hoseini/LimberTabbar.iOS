@@ -33,8 +33,11 @@ Currently there isn't many thing to do but you can:
 You can also specify background and icon tint color for each tab bar item, through changing the tabbarItem's class to `AHLimberTabbarItem` on identity inspector tab, in interface builder.
 
 # NOTICE
-1.The `AHLimberTabbarController` just overrides the definition of `tabBar(_: didSelect:)` function in order to change the default behaviour of `UITabbarController`. Therefore, it may corrupt you custom code and disable specific delegation.
-2. Current version is just a concept an is not fully tested. Please test it completely along side your development and make sure that meets your needs.
+1.  The `AHLimberTabbarController` just overrides the definition of `tabBar(_: didSelect:)` function in order to change the default behaviour of `UITabbarController`. Therefore, it may corrupt you custom code and disable specific delegation.
+
+2.  Current version is just a concept an is not fully tested. Please test it completely along side your development and make sure that meets your needs.
+
+3.  [#9](https://github.com/afshin-hoseini/LimberTabbar.iOS/issues/9)
 
 # To do
 
