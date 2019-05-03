@@ -12,7 +12,7 @@ Another iOS tabbar with smooth animation and more limber view. You can implement
 This is the very first released of this library and it is under test. It soon be available on cocoapod repo. Currenly you can install the first version by adding the line below to your `podfile`.
 
 ```
-pod 'LimberTabbar', :git=> 'https://github.com/afshin-hoseini/LimberTabbar.iOS.git', :tag=> '0.1.0'
+pod 'LimberTabbar', :git=> 'https://github.com/afshin-hoseini/LimberTabbar.iOS.git', :tag=> '0.2.0'
 ```
 
 and then do a `pod install`
@@ -32,12 +32,12 @@ Currently there isn't many thing to do but you can:
 
 You can also specify background and icon tint color for each tab bar item, through changing the tabbarItem's class to `AHLimberTabbarItem` on identity inspector tab, in interface builder.
 
+The `AHLimberTabbar` adjusts the the pit's depth according to the safe area insets. If you wish to ignore the safe area insets, make the `observeSafeAreaInsets` option `off` in interface builder.
+
 # NOTICE
 1.  The `AHLimberTabbarController` just overrides the definition of `tabBar(_: didSelect:)` function in order to change the default behaviour of `UITabbarController`. Therefore, it may corrupt you custom code and disable specific delegation.
 
 2.  Current version is just a concept an is not fully tested. Please test it completely along side your development and make sure that meets your needs.
-
-3.  [#9](https://github.com/afshin-hoseini/LimberTabbar.iOS/issues/9)
 
 # To do
 

@@ -15,7 +15,13 @@ import UIKit
 @IBDesignable
 public class AHLimberTabbar : UITabBar {
     
+    @IBInspectable
+    var observeSafeAreaInsets : Bool = true
+    
     var boundObserver : NSKeyValueObservation?
+    var safeViewInsetsObserver : NSKeyValueObservation?
+    var itemObserver : NSKeyValueObservation?
+    
     /**
      Since both background and bar tint colors will be null, this variable will capture the color on initialization.
     */
@@ -60,10 +66,17 @@ public class AHLimberTabbar : UITabBar {
     }
     
     
-    var itemObserver : NSKeyValueObservation?
+    deinit {
+        
+        itemObserver = nil
+        safeViewInsetsObserver = nil
+        boundObserver = nil
+    }
+    
     
     func commonInit() {
         
+        //Observes the selected item property and animates the selection.
         itemObserver = observe(\.selectedItem, changeHandler: { (ob, v) in
             
             if let selectedItem = self.selectedItem, let index = self.items?.firstIndex(of: selectedItem) {
@@ -82,12 +95,40 @@ public class AHLimberTabbar : UITabBar {
         self.shadowImage = UIImage()
     }
     
+    /**
+     Calculates the maximum depth of the pit.
+    */
     private func getPitDepth() -> CGFloat {
         
-        return bounds.height * 0.8
+        var percentage = CGFloat(0.8)
+        var safeAreaBottomInset = CGFloat(0)
+        
+        //Calculates the depth according to safeArea insets
+        if observeSafeAreaInsets, #available(iOS 11, *) {
+            
+            safeAreaBottomInset = CGFloat(self.safeAreaInsets.bottom)
+            percentage = safeAreaBottomInset > 0 ? 1 : percentage
+        }
+        
+        return (bounds.height - safeAreaBottomInset) * percentage
     }
     
+    
     public override func awakeFromNib() {
+        
+        
+        //Observes the safe area insets change if determined
+        if observeSafeAreaInsets, #available(iOS 11.0, *) {
+            
+            self.safeViewInsetsObserver = observe(\.safeAreaInsets, options: .init(arrayLiteral: .new, .old)) { (context, value) in
+                
+                if value.oldValue?.bottom != value.newValue?.bottom {
+                    
+                    print("Recalc pit height")
+                    self.reselectCurrentTab()
+                }
+            }
+        }
         
         //Initializes the selected tab holder view. (That circle view)
         self.selectedTabHolder = AHSelectedTabItem(size: getPitDepth())
