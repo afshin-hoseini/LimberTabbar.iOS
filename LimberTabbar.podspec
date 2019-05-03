@@ -23,7 +23,7 @@ TODO: Add long description of the pod here.
 
   s.homepage         = 'https://github.com/afshin-hoseini/LimberTabbar.iOS'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.license          = { :type => 'MIT', :file => 'LimberTabbar/LICENSE' }
   s.author           = { 'afshin.hoseini@gmail.com' => 'afshin.hoseini@gmail.com' }
   s.source           = { :git => 'https://github.com/afshin.hoseini@gmail.com/LimberTabbar.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/hoseini_afshin'
