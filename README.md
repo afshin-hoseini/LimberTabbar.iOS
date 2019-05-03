@@ -12,7 +12,7 @@ Another iOS tabbar with smooth animation and more limber view. You can implement
 This is the very first released of this library and it is under test. It soon be available on cocoapod repo. Currenly you can install the first version by adding the line below to your `podfile`.
 
 ```
-pod 'LimberTabbar', :git=> 'https://github.com/afshin-hoseini/LimberTabbar.iOS.git', :tag=> '0.1.0'
+pod 'LimberTabbar', :git=> 'https://github.com/afshin-hoseini/LimberTabbar.iOS.git', :tag=> '0.2.0'
 ```
 
 and then do a `pod install`
