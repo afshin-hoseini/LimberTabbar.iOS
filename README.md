@@ -1,3 +1,5 @@
+>This repo won't be maintained anymore.
+
 # Limber tab bar
 Another iOS tabbar with smooth animation and more limber view. You can implement easily into you current project with just two step.
 > Inspired by [this concept](https://dribbble.com/shots/6005981-Tab-Bar-Animation-nr-2) from [Lukas Stranak](https://dribbble.com/LukasStranak)
